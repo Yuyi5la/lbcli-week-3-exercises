@@ -6,7 +6,7 @@ pubkeys=($(bitcoin-cli -regtest decoderawtransaction "$transaction" | jq -r '.vi
 echo "Extracted pubkeys:"
 echo "${pubkeys[@]}"
 
-bitcoin-cli -regtest -named createmultisig nrequired=1 keys="[\"${pubkeys[0]}\",\"${pubkeys[1]}\",\"${pubkeys[2]}\",\"${pubkeys[3]}\"]"
+bitcoin-cli -regtest -named createmultisig nrequired=1 keys="[\"${pubkeys[0]}\",\"${pubkeys[1]}\",\"${pubkeys[2]}\",\"${pubkeys[3]}\"]" | jq -r '.address'
 
 
 
