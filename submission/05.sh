@@ -15,4 +15,6 @@ change_address=$(bitcoin-cli -regtest getnewaddress)
 
 amount=0.2
 change_amount=0.03659108
-psbt=$(bitcoin-cli -regtest -named createpsbt inputs='[{"txid":"'"$txid"'","vout":'"$vout1"'},{"txid":"'"$txid"'","vout":'"$vout2"' }]' outputs='{"'"$recipient"'":'"$amount"',"'"$change_address"'":'"$change_amount"'}')
+psbt=$(bitcoin-cli -regtest -named createpsbt \
+  inputs='''[{"txid":"'"$txid"'","vout":'"$vout1"'"},{"txid":"'"$txid"'","vout":'"$vout2"'"}]''' \
+  outputs='''[{"'"$recipient"'":'"$amount"'"},{"'"$change_address"'":'"$change_amount"'}]''')
