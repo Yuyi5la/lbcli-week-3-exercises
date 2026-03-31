@@ -12,9 +12,4 @@ txid=$(bitcoin-cli -regtest decoderawtransaction "$transaction" | jq -r ".txid")
 vout_1=$(bitcoin-cli -regtest decoderawtransaction "$transaction" | jq -r ".vout[0].n")
 vout_2=$(bitcoin-cli -regtest decoderawtransaction "$transaction" | jq -r ".vout[1].n")
 
-
-psbt=$(bitcoin-cli -regtest -named createpsbt \
-  inputs='''[{"txid":"'$txid'","vout":'$vout_1'},{"txid":"'$txid'","vout":'$vout_2'}]''' \
-  outputs='''[{"'$reciepient'":"'$amount'"}]''')
-
 bitcoin-cli -regtest -named createpsbt inputs='''[ { "txid": "'$txid'", "vout": '$vout_1' }, { "txid": "'$tixd", "vout": '$vout_2' } ]''' outputs='''{ "'$receipient'": 0.20000000 }'''
